@@ -1,0 +1,776 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>AidFund+</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      body {
+        background: #f6f8fb;
+        font-family: 'Fredoka', Arial, sans-serif;
+      }
+      .user-topbar {
+        width: 100%;
+        height: 64px;
+        background: linear-gradient(90deg, #f8fafc 0%, #e9ecef 100%);
+        box-shadow: 0 4px 24px rgba(108,99,255,0.08);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 32px;
+        border-radius: 0 0 20px 20px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      .user-topbar .brand {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #222;
+        letter-spacing: 1px;
+        display: flex;
+        align-items: center;
+      }
+      .user-topbar .brand .plus { color: #a51d23; }
+      .user-topbar nav {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .user-topbar nav a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #555;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        padding: 8px 18px;
+        border-radius: 10px;
+        background: transparent;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+        box-shadow: none;
+      }
+      .user-topbar nav a.active, .user-topbar nav a:hover {
+        background: #ecebfc;
+        color: #6C63FF;
+        box-shadow: 0 2px 8px rgba(108,99,255,0.08);
+      }
+      .user-topbar nav .admin-login-btn {
+        margin-left: 24px;
+        background: #6C63FF;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(108,99,255,0.18);
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+        font-size: 1.1rem;
+      }
+      .user-topbar nav .admin-login-btn:hover {
+        background: #554ee2;
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(108,99,255,0.22);
+        transform: scale(1.05);
+      }
+      /* Icon size */
+      .user-topbar nav .lucide {
+        width: 20px;
+        height: 20px;
+      }
+      .user-topbar .profile {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .user-topbar .profile img {
+        width: 36px; height: 36px; border-radius: 50%;
+      }
+      .main-content-user {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 32px;
+      }
+      .card-section {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        padding: 32px;
+        margin-bottom: 32px;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Fredoka', Arial, sans-serif;
+      }
+      @media (max-width: 700px) {
+        .user-topbar { flex-direction: column; height: auto; padding: 12px; }
+        .user-topbar nav { gap: 10px; }
+        .main-content-user { padding: 12px 0; }
+      }
+      .donor-modal-bg {
+        position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+        background: rgba(30,40,60,0.25); z-index: 9999;
+        display: flex; align-items: center; justify-content: center;
+      }
+      .donor-modal {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 4px 32px rgba(0,0,0,0.13);
+        padding: 36px 32px 28px 32px;
+        min-width: 340px; max-width: 95vw;
+        font-family: 'Fredoka', Arial, sans-serif;
+        position: relative;
+        animation: fadeInModal 0.2s;
+      }
+      @keyframes fadeInModal { from { transform: scale(0.97); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+      .donor-modal h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 18px;
+        color: #222;
+        text-align: center;
+      }
+      .donor-modal-close {
+        position: absolute; top: 12px; right: 18px;
+        background: none; border: none; font-size: 2rem; color: #aaa; cursor: pointer;
+        transition: color 0.2s;
+      }
+      .donor-modal-close:hover { color: #a51d23; }
+      .donor-form .form-group {
+        margin-bottom: 18px;
+        display: flex; flex-direction: column;
+      }
+      .donor-form label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        color: #444;
+      }
+      .donor-form input {
+        border: 1.5px solid #e6e9f0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 1.1rem;
+        font-family: 'Fredoka', Arial, sans-serif;
+        outline: none;
+        transition: border 0.2s;
+        background: #f6f8fb;
+      }
+      .donor-form input:focus {
+        border-color: #4b49ac;
+        background: #fff;
+      }
+      .donor-submit-btn {
+        width: 100%;
+        background: #4b49ac;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        padding: 12px 0;
+        margin-top: 8px;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-family: 'Fredoka', Arial, sans-serif;
+        box-shadow: 0 2px 8px rgba(75,73,172,0.08);
+      }
+      .donor-submit-btn:hover {
+        background: #3532a7;
+      }
+      .footer { background: #ecebfc !important; }
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+</head>
+
+<body>
+    <div class="user-topbar">
+      <div class="brand">AidFund<span class="plus">+</span></div>
+      <nav>
+        <a href="index.html" class="active"><i data-lucide="home"></i>Home</a>
+        <a href="donationHistory.jsp"><i data-lucide="book-open"></i>History</a>
+        <a href="causePage.jsp"><i data-lucide="heart"></i>Causes</a>
+        <a href="admin-login.html" class="admin-login-btn"><i data-lucide="user-shield"></i>Login as Admin</a>
+      </nav>
+    </div>
+    <div class="main-content-user"></div>
+    <!-- slider_area_start -->
+    <div class="slider_area">
+    <div class="single_slider d-flex align-items-center slider_bg_1 overlay2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="slider_text">
+                    <span>Get Started Today.</span>
+                    <h3>Help the Community in Need.</h3>
+                    <p>Be the reason someone believes in Good. <br>
+                        Small acts. Big Impact.</p>
+                    <!-- Removed the Learn More button -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- slider_area_end -->
+
+    <!-- reson_area_start  -->
+    <div id="reason-of-helping" class="reson_area section_padding">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb-55">
+                        <h3><span>Reason of Helping</span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_reson">
+                        <div class="thum">
+                            <div class="thum_1">
+                                <img src="img/help/1.png" alt="Care for Refugee Families">
+                            </div>
+                        </div>
+                        <div class="help_content">
+                            <h4>Care for Refugee Families</h4>
+                            <p>Support displaced families with shelter, food, and essential resources as they rebuild their lives in safety and dignity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_reson">
+                        <div class="thum">
+                            <div class="thum_1">
+                                <img src="img/help/2.png" alt="Fund the Future">
+                            </div>
+                        </div>
+                        <div class="help_content">
+                            <h4>Fund the Future</h4>
+                            <p>Empower children and youth with access to quality education, scholarships, and learning materials for a brighter tomorrow.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="single_reson">
+                        <div class="thum">
+                            <div class="thum_1">
+                                <img src="img/help/3.png" alt="Bridge the Digital Divide">
+                            </div>
+                        </div>
+                        <div class="help_content">
+                            <h4>Bridge the Digital Divide</h4>
+                            <p>Provide technology, internet access, and digital skills training to underserved communities, ensuring everyone can thrive in a connected world.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- reson_area_end  -->
+
+    <!-- latest_activites_area_start  -->
+    <div class="latest_activites_area">
+        <div class=" video_bg_1 video_activite  d-flex align-items-center justify-content-center">
+            <a class="popup-video" href="https://www.youtube.com/watch?v=MG3jGHnBVQs">
+                <i class="flaticon-ui"></i>
+            </a>
+        </div>
+        <div class="container">
+            <div class="row justify-content-end">
+                <div class="col-lg-7">
+                    <div class="activites_info">
+                        <div class="section_title">
+                            <h3> <span>Watch Our Latest  </span><br>
+                                Activities</h3>
+                        </div>
+                        <p class="para_1">Get an inside look at the meaningful work we're doing through our most recent projects, campaigns, 
+                        and community out reach programs. This section showcases real stories, heartfelt moments, and inspiring efforts captured 
+                        through videos, photo highlights, and live coverage of our activities</p>
+                        <p class="para_2">By watching our latest activities, you not only witness the changes we're creating together but also 
+                        become a part of the journey. Stay informed, be inspired, and see how compassion in action is transforming lives every day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- latest_activites_area_end  -->
+
+    <!-- counter_area_start  -->
+    <div class="counter_area">
+        <div class="container">
+            <div class="counter_bg overlay">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single_counter d-flex align-items-center justify-content-center">
+                            <div class="icon">
+                                <i class="flaticon-calendar"></i>
+                            </div>
+                            <div class="events">
+                                <h3 class="counter">120</h3>
+                                <p>Finished Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single_counter d-flex align-items-center justify-content-center">
+                            <div class="icon">
+                                <i class="flaticon-heart-beat"></i>
+                            </div>
+                            <div class="events">
+                                <h3 class="counter">120</h3>
+                                <p>Finished Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single_counter d-flex align-items-center justify-content-center">
+                            <div class="icon">
+                                <i class="flaticon-in-love"></i>
+                            </div>
+                            <div class="events">
+                                <h3 class="counter">120</h3>
+                                <p>Finished Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single_counter d-flex align-items-center justify-content-center">
+                            <div class="icon">
+                                <i class="flaticon-hug"></i>
+                            </div>
+                            <div class="events">
+                                <h3 class="counter">120</h3>
+                                <p>Finished Event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- counter_area_end  -->
+
+    <!-- our_volunteer_area_start  -->
+    <div class="our_volunteer_area section_padding">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="section_title text-center mb-55">
+                    <h3><span>Our Team</span></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Member 1 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single_volenteer">
+                    <div class="volenteer_thumb">
+                        <img src="img/volenteer/1.png" alt="">
+                    </div>
+                    <div class="voolenteer_info d-flex align-items-end">
+                        <div class="social_links">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="info_inner">
+                            <h4>Saidatul Najla</h4>
+                            <p>Head of the Team</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single_volenteer">
+                    <div class="volenteer_thumb">
+                        <img src="img/volenteer/2.png" alt="">
+                    </div>
+                    <div class="voolenteer_info d-flex align-items-end">
+                        <div class="social_links">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="info_inner">
+                            <h4>Edryana Shahira</h4>
+                            <p>Co-Owner</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 3 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="single_volenteer">
+                    <div class="volenteer_thumb">
+                        <img src="img/volenteer/3.png" alt="">
+                    </div>
+                    <div class="voolenteer_info d-flex align-items-end">
+                        <div class="social_links">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="info_inner">
+                            <h4>Norfiffyshamiza</h4>
+                            <p>Organiser</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Member 4 -->
+            <div class="col-lg-4 col-md-6 mt-5">
+                <div class="single_volenteer">
+                    <div class="volenteer_thumb">
+                        <img src="img/volenteer/4.png" alt="">
+                    </div>
+                    <div class="voolenteer_info d-flex align-items-end">
+                        <div class="social_links">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="info_inner">
+                            <h4>Nawal Sufiyah</h4>
+                            <p>Mysterious</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</div> <!-- end our_volunteer_area -->
+    <!-- our_volunteer_area_end  -->
+
+
+    <!-- footer_start  -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-lg-4 ">
+                        <div class="footer_widget">
+                            <div class="footer_logo">
+                                <a href="#" style="text-decoration:none;">
+                                    <span style="font-family:'Fredoka',Arial,sans-serif;font-size:2.2rem;font-weight:700;color:#222;letter-spacing:1px;display:flex;align-items:center;">
+                                        AidFund<span class="plus" style="color:#a51d23;">+</span>
+                                    </span>
+                                </a>
+                            </div>
+                            <p class="address_text">AidFund+ is dedicated to empowering communities by providing essential resources such as food, clean water, clothing, and education to those in need. Join us in making a positive impact and building a brighter future for all.</p>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="ti-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="ti-twitter-alt"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">Services</h3>
+                            <ul class="links">
+                                <li><a href="#">Donate</a></li>
+                                <li><a href="#">Sponsor</a></li>
+                                <li><a href="#">Fundraise</a></li>
+                                <li><a href="#">Volunteer</a></li>
+                                <li><a href="#">Partner</a></li>
+                                <li><a href="#">Jobs</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">Contacts</h3>
+                            <div class="contacts">
+                                <p>
+                                	+60 13-456 7890<br>
+					                support@aidfund.my<br>
+					                12 Jalan Kasih, Seksyen 7,<br>
+					                40000 Shah Alam, Selangor, Malaysia<br><br>
+					           </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="row">
+                    <div class="bordered_1px "></div>
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> AidFund+. All rights reserved. | Empowering communities, changing lives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer_end  -->
+
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
+    <!--contact js-->
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
+
+    <script src="js/main.js"></script>
+    <script>
+    function formatCurrency(amount) {
+      return 'RM ' + Number(amount).toLocaleString('en-MY', {minimumFractionDigits: 2});
+    }
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr);
+      return d.toLocaleDateString('en-MY', {year: 'numeric', month: 'short', day: 'numeric'});
+    }
+
+    // Generate a unique Reference ID for each donation
+    function generateRefId() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let id = 'DNR-';
+      for (let i = 0; i < 7; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
+      return id;
+    }
+
+    function populateCauseSelect() {
+      const select = document.getElementById('causeSelect');
+      select.innerHTML = '<option value="">Choose a cause...</option>';
+      let causes = [];
+      try { causes = JSON.parse(localStorage.getItem('causes')) || []; } catch (e) {}
+      const now = new Date();
+      causes.forEach(cause => {
+        if (
+          cause.id &&
+          cause.title &&
+          cause.startDate && cause.endDate &&
+          new Date(cause.startDate) <= now && new Date(cause.endDate) >= now
+        ) {
+          const opt = document.createElement('option');
+          opt.value = cause.id;
+          opt.textContent = cause.title;
+          select.appendChild(opt);
+        }
+      });
+    }
+
+    const donorModal = document.getElementById('donorModal');
+    const closeDonorModal = document.getElementById('closeDonorModal');
+    document.getElementById('openDonorModal').addEventListener('click', function() {
+      const select = document.getElementById('causeSelect');
+      const amount = document.getElementById('donationAmount').value;
+      if (!select.value) {
+        alert('Please select a cause.');
+        return;
+      }
+      if (!amount || Number(amount) < 1) {
+        alert('Please enter a valid amount.');
+        return;
+      }
+      document.getElementById('modalCauseTitle').value = select.options[select.selectedIndex].text;
+      document.getElementById('modalCauseTitle').dataset.causeId = select.value;
+      document.getElementById('modalDonationAmount').value = amount;
+      // Generate and show Reference ID immediately
+      const refId = generateRefId();
+      document.getElementById('refId').value = refId;
+      document.getElementById('refIdContainer').style.display = 'block';
+      donorModal.style.display = 'flex';
+    });
+    closeDonorModal.addEventListener('click', function() {
+      donorModal.style.display = 'none';
+      document.getElementById('donorModalForm').reset();
+      document.getElementById('donationSuccess').style.display = 'none';
+      document.getElementById('refIdContainer').style.display = 'none';
+    });
+    window.onclick = function(event) {
+      if (event.target === donorModal) {
+        donorModal.style.display = 'none';
+        document.getElementById('donorModalForm').reset();
+        document.getElementById('donationSuccess').style.display = 'none';
+        document.getElementById('refIdContainer').style.display = 'none';
+      }
+    };
+
+    document.getElementById('donorModalForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const causeId = document.getElementById('modalCauseTitle').dataset.causeId;
+      const amount = Number(document.getElementById('modalDonationAmount').value);
+      const donorName = document.getElementById('donorName').value;
+      const donorEmail = document.getElementById('donorEmail').value;
+      const donorPhone = document.getElementById('donorPhone').value;
+      const refId = document.getElementById('refId').value;
+      if (!causeId || !amount || amount < 1) {
+        alert('Please select a cause and enter a valid amount.');
+        return;
+      }
+      let donations = [];
+      try { donations = JSON.parse(localStorage.getItem('donations')) || []; } catch (e) {}
+      donations.push({
+        id: Date.now(),
+        refId,
+        causeId,
+        amount,
+        donorName,
+        donorEmail,
+        donorPhone,
+        date: new Date().toISOString()
+      });
+      localStorage.setItem('donations', JSON.stringify(donations));
+      // Show Reference ID and success message
+      document.getElementById('refId').value = refId;
+      document.getElementById('refIdContainer').style.display = 'block';
+      document.getElementById('donationSuccess').style.display = 'block';
+      document.getElementById('donationSuccess').innerHTML = `
+        <div style="font-size:1.1em; margin-bottom:8px; color: #3CC78F; font-weight: bold;">Donation Successful! Thank you for your generosity.</div>
+        <div style="font-size:1em; margin-bottom:4px;"><b>Your Reference ID:</b></div>
+        <input type="text" class="form-control" value="${refId}" readonly style="font-weight:bold; color:#6C63FF; text-align:center; margin-bottom:8px;">
+        <div style="font-size:0.95em; color:#888;">Please save this Reference ID to check your donation status.</div>
+        <button id='closeAfterSuccess' class='btn' style='margin-top:16px;background:#6C63FF;color:#fff;font-weight:700;border-radius:10px;padding:10px 28px;font-size:1.1em;width:100%;'>Close</button>
+      `;
+      // Disable all form fields and the Donate button
+      Array.from(document.querySelectorAll('#donorModalForm input, #donorModalForm button[type="submit"]')).forEach(el => el.disabled = true);
+      // Add event for the close button
+      setTimeout(() => {
+        const closeBtn = document.getElementById('closeAfterSuccess');
+        if (closeBtn) {
+          closeBtn.onclick = function() {
+            donorModal.style.display = 'none';
+            document.getElementById('donorModalForm').reset();
+            document.getElementById('donationSuccess').style.display = 'none';
+            document.getElementById('refIdContainer').style.display = 'none';
+            // Re-enable form fields for next donation
+            Array.from(document.querySelectorAll('#donorModalForm input, #donorModalForm button[type="submit"]')).forEach(el => el.disabled = false);
+          };
+        }
+      }, 100);
+      window.dispatchEvent(new Event('donationsUpdated'));
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      populateCauseSelect();
+      const amountInput = document.getElementById('donationAmount');
+      document.querySelectorAll('.preset-amount').forEach(btn => {
+        btn.addEventListener('click', function() {
+          if (this.dataset.amount === 'other') {
+            amountInput.value = '';
+            amountInput.focus();
+          } else {
+            amountInput.value = this.dataset.amount;
+          }
+          // Optional: visually highlight selected button
+          document.querySelectorAll('.preset-amount').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+        });
+      });
+    });
+    </script>
+
+    <!-- Add after the donor modal HTML -->
+    <div id="orgDescModal" class="donor-modal-bg" style="display:none;">
+      <div class="donor-modal">
+        <button class="donor-modal-close" onclick="closeOrgDescModal()">&times;</button>
+        <h2 id="orgDescTitle">Title</h2>
+        <p id="orgDescBody" style="margin-top:18px;font-size:1.15rem;color:#444;"></p>
+      </div>
+    </div>
+    <script>
+    const orgDescriptions = {
+      fund: {
+        title: 'Collecting Fund',
+        desc: `AidFund+ organizes transparent fundraising campaigns to support children's education, healthcare, and basic needs. Every contribution helps us reach more lives and create lasting change.\n\nWe ensure that your donations are used where they matter most, making a real impact in the community. Join us in building a brighter future for those in need.`
+      },
+      blood: {
+        title: 'Blood Camp',
+        desc: `Our blood donation camps save lives by ensuring a steady supply for hospitals and emergencies. We partner with local health organizations to maximize our reach and effectiveness.\n\nYour participation helps us respond quickly to urgent needs and support patients in critical situations. Be a hero—donate blood and save lives!`
+      },
+      volunteer: {
+        title: 'Friendly Volunteer',
+        desc: `Our volunteers are the heart of AidFund+, providing hands-on support in communities, events, and outreach programs. We offer training, support, and a chance to make a real difference together.\n\nBecome a part of our family and help us bring hope, care, and opportunity to those who need it most.`
+      }
+    };
+    function showOrgDescModal(key) {
+      document.getElementById('orgDescTitle').textContent = orgDescriptions[key].title;
+      document.getElementById('orgDescBody').textContent = orgDescriptions[key].desc;
+      document.getElementById('orgDescModal').style.display = 'flex';
+    }
+    function closeOrgDescModal() {
+      document.getElementById('orgDescModal').style.display = 'none';
+    }
+    </script>
+    <script>
+      lucide.createIcons();
+    </script>
+</body>
+
+</html>
