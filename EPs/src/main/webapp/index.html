@@ -1,18 +1,17 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>AidFund+</title>
-    <meta name="description" content="">
+    <meta name="description" content="AidFund+ empowers communities with food, education, and care. Donate today.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
     <!-- Place favicon.ico in the root directory -->
 
-    <!-- CSS here -->
+    <!-- CSS here -->   
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -197,12 +196,53 @@
         box-shadow: 0 2px 8px rgba(75,73,172,0.08);
       }
       .donor-submit-btn:hover {
-        background: #3532a7;
+        background: linear-gradient(135deg, #6C63FF, #887eff);
       }
       .footer { background: #ecebfc !important; }
       html {
         scroll-behavior: smooth;
       }
+	  .single_volenteer:hover {
+	  transform: translateY(-5px);
+	  transition: 0.3s ease;
+	  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+	  }
+	  .testimonial-card {
+	  background: #fff;
+	  padding: 20px;
+	  border-radius: 12px;
+	  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+	  margin-bottom: 24px;
+	  }
+	  /* Center the arrows vertically and move them outside the testimonial cards */
+	  .carousel-control-prev,
+	  .carousel-control-next {
+	  top: 50%;
+	  transform: translateY(-50%);
+	  width: 40px;
+	  height: 40px;
+	  background-color: rgba(0,0,0,0.1);
+	  border-radius: 50%;
+	  }
+	  .carousel-control-prev-icon,
+	  .carousel-control-next-icon {
+	  background-size: 60% 60%;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  }
+	  .carousel-control-prev {
+	  left: -60px; /* Adjust distance from testimonial cards */
+	  }
+	  .carousel-control-next {
+	  right: -60px;
+	  }
+	  @media (max-width: 768px) {
+	  .carousel-control-prev,
+	  .carousel-control-next {
+	  display: none; /* Hide arrows on small screens */
+	   }
+	  }
+      
     </style>
 </head>
 
@@ -228,6 +268,8 @@
                     <h3>Help the Community in Need.</h3>
                     <p>Be the reason someone believes in Good. <br>
                         Small acts. Big Impact.</p>
+                    <a href="causePage.jsp" class="btn btn-primary mt-3" style="padding: 10px 24px; font-size: 1.2rem; font-weight: 600; background: #887EFF; color: #fff; border-radius: 10px; display: inline-block; margin-top: 16px;">Donate Now</a>
+                        
                     <!-- Removed the Learn More button -->
                 </div>
             </div>
@@ -237,7 +279,7 @@
 
     <!-- slider_area_end -->
 
-    <!-- reson_area_start  -->
+    <!-- reason_area_start  -->
     <div id="reason-of-helping" class="reson_area section_padding">
         <div class="container">
             <div class="row justify-content-center">
@@ -290,7 +332,8 @@
             </div>
         </div>
     </div>
-    <!-- reson_area_end  -->
+    <!-- reason_area_end  -->
+    
 
     <!-- latest_activites_area_start  -->
     <div class="latest_activites_area">
@@ -318,177 +361,253 @@
         </div>
     </div>
     <!-- latest_activites_area_end  -->
-
-    <!-- counter_area_start  -->
-    <div class="counter_area">
-        <div class="container">
-            <div class="counter_bg overlay">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single_counter d-flex align-items-center justify-content-center">
-                            <div class="icon">
-                                <i class="flaticon-calendar"></i>
-                            </div>
-                            <div class="events">
-                                <h3 class="counter">120</h3>
-                                <p>Finished Event</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single_counter d-flex align-items-center justify-content-center">
-                            <div class="icon">
-                                <i class="flaticon-heart-beat"></i>
-                            </div>
-                            <div class="events">
-                                <h3 class="counter">120</h3>
-                                <p>Finished Event</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single_counter d-flex align-items-center justify-content-center">
-                            <div class="icon">
-                                <i class="flaticon-in-love"></i>
-                            </div>
-                            <div class="events">
-                                <h3 class="counter">120</h3>
-                                <p>Finished Event</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single_counter d-flex align-items-center justify-content-center">
-                            <div class="icon">
-                                <i class="flaticon-hug"></i>
-                            </div>
-                            <div class="events">
-                                <h3 class="counter">120</h3>
-                                <p>Finished Event</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    
+   <!-- story_section_start -->
+<section class="story_section py-5" style="background-color: #f5f6ff;">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Text Content Left -->
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <div class="section_title">
+          <h3 class="mb-3" style="color: #333;">Her Story: Aisha, Age 10</h3>
         </div>
+        <p style="font-size: 1.1rem; color: #555;">
+          Aisha was just 10 when she lost her leg in a tragic road accident while walking to rural school.
+          Despite the trauma, Aisha remains one of the brightest and most determined children we’ve met. Her dream is to
+          become a teacher — to help kids like her who can't afford education or mobility support.
+        </p>
+        <p style="font-size: 1.1rem; color: #555;">
+          Her family struggles financially and cannot afford a prosthetic limb, which costs over RM12,000. With your help,
+          we can change Aisha’s life. Your donation today will fund her prosthetic leg, therapy sessions, and school needs.
+          Let’s give her a chance to stand tall again — and inspire others along the way.
+        </p>
+        <a href="causePage.jsp" class="btn btn-primary mt-3" style="border-radius: 10px;">Donate to Aisha</a>
+      </div>
+
+      <!-- Image Right -->
+      <div class="col-lg-6">
+        <img src="img/news/amputatedKid.jpeg" alt="Amputated Girl" class="img-fluid rounded shadow" style="width: 100%; object-fit: cover;">
+      </div>
     </div>
-    <!-- counter_area_end  -->
+  </div>
+</section>
+<!-- story_section_end -->
 
-    <!-- our_volunteer_area_start  -->
-    <div class="our_volunteer_area section_padding">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section_title text-center mb-55">
-                    <h3><span>Our Team</span></h3>
-                </div>
+<!-- counter_area_start  -->
+<div class="counter_area" style="background:#f6f8fb; padding: 60px 0;">
+  <div class="container">
+    <div class="counter_bg overlay">
+      <div class="row text-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="single_counter">
+            <div class="icon mb-2">
+              <i class="flaticon-calendar" style="font-size: 2.2rem; color: #FFFFFF;"></i>
             </div>
+            <h3 class="counter">3</h3>
+            <p style="color: #fff;">Campaigns Completed</p>
+          </div>
         </div>
-        <div class="row justify-content-center">
-            <!-- Member 1 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="single_volenteer">
-                    <div class="volenteer_thumb">
-                        <img src="img/volenteer/1.png" alt="">
-                    </div>
-                    <div class="voolenteer_info d-flex align-items-end">
-                        <div class="social_links">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="info_inner">
-                            <h4>Saidatul Najla</h4>
-                            <p>Head of the Team</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="single_counter">
+            <div class="icon mb-2">
+              <i class="flaticon-heart-beat" style="font-size: 2.2rem; color: #FFFFFF;"></i>
             </div>
+            <h3 class="counter">250</h3>
+            <p style="color: #fff;">Donors Participated</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="single_counter">
+            <div class="icon mb-2">
+              <i class="flaticon-in-love" style="font-size: 2.2rem; color: #FFFFFF;"></i>
+            </div>
+            <h3 class="counter">19800</h3>
+            <p style="color: #fff;">Total Funds Raised</p>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="single_counter">
+            <div class="icon mb-2">
+              <i class="flaticon-hug" style="font-size: 2.2rem; color: #FFFFFF;"></i>
+            </div>
+            <h3 class="counter">8900</h3>
+            <p style="color: #fff;">Lives Impacted</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- counter_area_end  -->
 
-            <!-- Member 2 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="single_volenteer">
-                    <div class="volenteer_thumb">
-                        <img src="img/volenteer/2.png" alt="">
-                    </div>
-                    <div class="voolenteer_info d-flex align-items-end">
-                        <div class="social_links">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="info_inner">
-                            <h4>Edryana Shahira</h4>
-                            <p>Co-Owner</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- our_volunteer_area_start -->
+<div class="our_volunteer_area section_padding" style="background: #f9f9ff;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+        <div class="section_title text-center mb-5">
+          <h3><span>Meet the Team</span></h3>
+          <p style="color:#666;">The minds and hearts behind AidFund+</p>
+        </div>
+      </div>
+    </div>
 
-            <!-- Member 3 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="single_volenteer">
-                    <div class="volenteer_thumb">
-                        <img src="img/volenteer/3.png" alt="">
-                    </div>
-                    <div class="voolenteer_info d-flex align-items-end">
-                        <div class="social_links">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="info_inner">
-                            <h4>Norfiffyshamiza</h4>
-                            <p>Organiser</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row justify-content-center">
+    
+      <!-- Team Member -->
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="single_volenteer text-center p-3 shadow-sm bg-white rounded h-100">
+          <div class="volenteer_thumb mb-3">
+	          	<img src="img/volenteer/1.png" class="img-fluid rounded-circle mx-auto d-block" alt="Saidatul Najla">
+          </div>
+          <div class="info_inner">
+            <h5 class="mb-1">Saidatul Najla</h5>
+            <p class="text-muted small">Head of the Team</p>
+          </div>
+        </div>
+      </div>
 
-            <!-- Member 4 -->
-            <div class="col-lg-4 col-md-6 mt-5">
-                <div class="single_volenteer">
-                    <div class="volenteer_thumb">
-                        <img src="img/volenteer/4.png" alt="">
-                    </div>
-                    <div class="voolenteer_info d-flex align-items-end">
-                        <div class="social_links">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="info_inner">
-                            <h4>Nawal Sufiyah</h4>
-                            <p>Mysterious</p>
-                        </div>
-                    </div>
-                </div>
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="single_volenteer text-center p-3 shadow-sm bg-white rounded h-100">
+          <div class="volenteer_thumb mb-3">
+            <img src="img/volenteer/2.png" class="img-fluid rounded-circle mx-auto d-block" alt="Edryana Shahira">
+          </div>
+          <div class="info_inner">
+            <h5 class="mb-1">Edryana Shahira</h5>
+            <p class="text-muted small">Co-Owner</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="single_volenteer text-center p-3 shadow-sm bg-white rounded h-100">
+          <div class="volenteer_thumb mb-3">
+            <img src="img/volenteer/3.png" class="img-fluid rounded-circle mx-auto d-block" alt="Norfiffyshamiza">
+          </div>
+          <div class="info_inner">
+            <h5 class="mb-1">Norfiffyshamiza</h5>
+            <p class="text-muted small">Organiser</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-5">
+        <div class="single_volenteer text-center p-3 shadow-sm bg-white rounded h-100">
+          <div class="volenteer_thumb mb-3">
+            <img src="img/volenteer/4.png" class="img-fluid rounded-circle mx-auto d-block" alt="Nawal Sufiyah">
+          </div>
+          <div class="info_inner">
+            <h5 class="mb-1">Nawal Sufiyah</h5>
+            <p class="text-muted small">Co-Organiser</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- our_volunteer_area_end -->
+
+   
+<!-- testimonial_sect_start -->
+<div class="section_padding" style="background:#f6f8fb;">
+  <div class="container">
+    <div class="section_title text-center mb-5">
+      <h3><span>What Donors Say</span></h3>
+    </div>
+
+    <div id="testimonialCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 text-center">
+              <img src="img/testimonial/asianwoman.jpg" style="width: 80px; border-radius: 50%;" alt="Donor">
+              <p class="mt-3">"It felt amazing knowing my donation helped fund a child’s education. AidFund+ is real."</p>
+              <strong>- Lina Wong</strong>
             </div>
-        </div> <!-- end row -->
-    </div> <!-- end container -->
-</div> <!-- end our_volunteer_area -->
-    <!-- our_volunteer_area_end  -->
+            <div class="col-lg-4 col-md-6 text-center">
+              <img src="img/testimonial/man.jpg" style="width: 80px; border-radius: 50%;" alt="Donor">
+              <p class="mt-3">"The donation process was smooth and secure. Highly recommend supporting this cause!"</p>
+              <strong>- Asyraf Khair</strong>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+              <img src="img/testimonial/hijab.png" style="width: 80px; border-radius: 50%;" alt="Donor">
+              <p class="mt-3">"Giving through AidFund+ was effortless, but the impact feels huge. I'm proud to be part of this."</p>
+              <strong>- Amelya Mohd</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 text-center">
+              <img src="img/testimonial/oldwoman.png" style="width: 80px; border-radius: 50%;" alt="Donor">
+              <p class="mt-3">"As a retired teacher, I'm happy to contribute to children's learning and mobility."</p>
+              <strong>- Cikgu Anne</strong>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+              <img src="img/testimonial/youngwoman.png" style="width: 80px; border-radius: 50%;" alt="Donor">
+              <p class="mt-3">"Love how transparent and personal the stories are. It really moves your heart."</p>
+              <strong>- Syazwani Arif</strong>
+            </div>
+            <div class="col-lg-4 col-md-6 text-center">
+              <img src="img/testimonial/youngman.png" style="width: 80px; border-radius: 50%;" alt="Donor">
+              <p class="mt-3">“Helping out felt real. One small step, big meaning. Thanks to this website, everything went so smooth.”</p>
+              <strong>- Jackwon Wang</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls -->
+      <a class="carousel-control-prev" href="#testimonialCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#testimonialCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- testimonial_sect_end --> 
 
 
     <!-- footer_start  -->
+<div class="section_padding" style="background:#ecebfc;">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-4 mb-3">
+        <i data-lucide="shield-check" style="width:40px;height:40px;color:#6C63FF;"></i>
+        <h5 class="mt-2">Secure Donations</h5>
+        <p>Your info is encrypted and protected.</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <i data-lucide="pie-chart" style="width:40px;height:40px;color:#6C63FF;"></i>
+        <h5 class="mt-2">Transparent Usage</h5>
+        <p>Every sen goes to where it matters most.</p>
+      </div>
+      <div class="col-md-4 mb-3">
+        <i data-lucide="clock" style="width:40px;height:40px;color:#6C63FF;"></i>
+        <h5 class="mt-2">Real-Time Updates</h5>
+        <p>Stay informed with live campaign tracking.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- separator line -->
+<hr style="border: none; border-top: 1px solid #ccc; margin: 0;">
+
     <footer class="footer">
         <div class="footer_top">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-4 col-md-6 col-lg-4 ">
-                        <div class="footer_widget">
+                    <div class="col-xl-4 col-md-6 col-lg-4 d-flex flex-column justify-content-start">
+ 					 <div class="footer_widget" style="margin-top: -15px;">
                             <div class="footer_logo">
                                 <a href="#" style="text-decoration:none;">
                                     <span style="font-family:'Fredoka',Arial,sans-serif;font-size:2.2rem;font-weight:700;color:#222;letter-spacing:1px;display:flex;align-items:center;">
@@ -496,21 +615,12 @@
                                     </span>
                                 </a>
                             </div>
-                            <p class="address_text">AidFund+ is dedicated to empowering communities by providing essential resources such as food, clean water, clothing, and education to those in need. Join us in making a positive impact and building a brighter future for all.</p>
+                           <p class="address_text" style="margin-top: 8px;">
+ 						   AidFund+ is dedicated to empowering communities by providing essential resources such as food, clean water, clothing, and education to those in need. Join us in making a positive impact and building a brighter future for all.
+						   </p>
                             <div class="socail_links">
                                 <ul>
-                                    <li>
-                                        <a href="#"><i class="ti-facebook"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="ti-twitter-alt"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-linkedin"></i></a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -519,12 +629,10 @@
                         <div class="footer_widget">
                             <h3 class="footer_title">Services</h3>
                             <ul class="links">
-                                <li><a href="#">Donate</a></li>
-                                <li><a href="#">Sponsor</a></li>
-                                <li><a href="#">Fundraise</a></li>
-                                <li><a href="#">Volunteer</a></li>
-                                <li><a href="#">Partner</a></li>
-                                <li><a href="#">Jobs</a></li>
+                                <li><a href="causePage.jsp">Donate</a></li>
+								<li><a href="https://wa.me/601111431767?text=I%20want%20to%20be%20a%20Volunteer!" target="_blank">Become a Volunteer</a></li>
+								<li><a href="mailto:aidfundpartner@gmail.com?subject=Corporate Partnership Inquiry">Corporate Partnership</a></li>
+                   
                             </ul>
                         </div>
                     </div>
@@ -543,7 +651,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>      
         <div class="copy-right_text">
             <div class="container">
                 <div class="row">
@@ -556,6 +664,7 @@
                 </div>
             </div>
         </div>
+      
     </footer>
     <!-- footer_end  -->
 
@@ -584,7 +693,6 @@
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/mail-script.js"></script>
-
     <script src="js/main.js"></script>
     <script>
     function formatCurrency(amount) {
