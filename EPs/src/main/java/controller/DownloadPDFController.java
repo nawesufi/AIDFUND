@@ -16,6 +16,9 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 
 import dao.DonationDAO;
 
+/**
+ * Servlet implementation to export a pdf file from report page (download pdf button)
+ */
 @WebServlet("/DownloadPDF")
 public class DownloadPDFController extends HttpServlet {
     private static final long serialVersionUID = 1L;

@@ -13,7 +13,7 @@ import java.io.IOException;
 import dao.AdminDAO;
 
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LoginController, for login purposes
  */
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {

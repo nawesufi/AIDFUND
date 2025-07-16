@@ -18,7 +18,7 @@ import dao.DonationDAO;
 import dao.DonorDAO;
 
 /**
- * Servlet implementation class AddDonationController
+ * Servlet implementation class to add donation (form) by donor
  */
 @WebServlet("/addDonation")
 public class AddDonationController extends HttpServlet {

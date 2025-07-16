@@ -13,7 +13,8 @@ import java.io.IOException;
 import dao.DonationDAO;
 
 /**
- * Servlet implementation class SearchDonationController
+ * Servlet implementation class SearchDonationController, for donor to search history by their 
+ * personalised reference ID (donation history purposes)
  */
 @WebServlet("/searchDonation")
 public class SearchDonationController extends HttpServlet {

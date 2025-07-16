@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet implementation for the statistics widgets in the admin dashboard
+ */
 @WebServlet("/dashboard")
 public class DashboardController extends HttpServlet {
     private static final long serialVersionUID = 1L;

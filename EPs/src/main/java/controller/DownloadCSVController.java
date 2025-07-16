@@ -13,6 +13,9 @@ import java.util.List;
 
 import dao.DonationDAO;
 
+/**
+ * Servlet implementation for "download csv" button
+ */
 @WebServlet("/DownloadCSV")
 public class DownloadCSVController extends HttpServlet {
     private static final long serialVersionUID = 1L;

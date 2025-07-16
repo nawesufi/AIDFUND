@@ -15,7 +15,7 @@ import dao.CauseDAO;
 import dao.DonationDAO;
 
 /**
- * Servlet implementation class ReportByCauseController
+ * Servlet implementation class ReportByCauseController, to filter donation by causes (admin dashboard purposes)
  */
 @WebServlet("/reportByCause")
 public class ReportByCauseController extends HttpServlet {

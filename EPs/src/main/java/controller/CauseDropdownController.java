@@ -10,6 +10,9 @@ import java.util.List;
 
 import dao.CauseDAO;
 
+/**
+ * Servlet implementation to get campaigns from a dropdown. (NOT USED)
+ */
 @WebServlet("/DonatePage")
 public class CauseDropdownController extends HttpServlet {
     /**

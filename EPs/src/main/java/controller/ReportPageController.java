@@ -15,7 +15,7 @@ import dao.CauseDAO;
 import dao.DonationDAO;
 
 /**
- * Servlet implementation class ReportPageController
+ * Servlet implementation class ReportPageController, UNUSED.
  */
 @WebServlet("/report")
 public class ReportPageController extends HttpServlet {

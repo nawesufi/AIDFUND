@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import dao.CauseDAO;
 
 /**
- * Servlet implementation class AddCauseController
+ * Servlet implementation class to add cause/create campaigns
  */
 @WebServlet("/AddCauseController")
 @jakarta.servlet.annotation.MultipartConfig(

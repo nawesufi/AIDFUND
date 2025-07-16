@@ -14,7 +14,7 @@ import java.util.List;
 import dao.CauseDAO;
 
 /**
- * Servlet implementation class ListActiveCauseController
+ * Servlet implementation class ListActiveCauseController, to display causes that is active
  */
 @WebServlet("/causePage")
 public class ListActiveCauseController extends HttpServlet {

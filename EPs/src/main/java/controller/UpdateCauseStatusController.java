@@ -10,7 +10,7 @@ import java.io.IOException;
 import dao.CauseDAO;
 
 /**
- * Servlet to update the status (Active/Inactive) of a Cause
+ * Servlet to update the status (Active/Inactive) of a Cause (button)
  */
 @WebServlet("/UpdateCauseStatusController")
 public class UpdateCauseStatusController extends HttpServlet {
