@@ -38,6 +38,8 @@ public class ReportByMonthController extends HttpServlet {
             }
 
             request.setAttribute("donations", donations);
+            request.setAttribute("selectedMonth", monthStr);
+            request.setAttribute("selectedYear", yearStr);
             request.getRequestDispatcher("report.jsp").forward(request, response);
 
         } catch (Exception e) {

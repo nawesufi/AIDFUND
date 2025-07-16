@@ -315,17 +315,16 @@
     <div class="report-filters">
       <form method="get" action="byMonthReport" class="report-filter-group">
         <label for="month"><i class="fa fa-calendar"></i> Month:</label>
-        <select name="month" id="month">
-          <c:forEach begin="1" end="12" var="m">
-            <option value="${m}">${m}</option>
-          </c:forEach>
-        </select>
-        <label for="year"><i class="fa fa-calendar-o"></i> Year:</label>
-        <select name="year" id="year">
-          <c:forEach begin="2023" end="2025" var="y">
-            <option value="${y}">${y}</option>
-          </c:forEach>
-        </select>
+       <select name="month" id="month">
+ 	 <c:forEach begin="1" end="12" var="m">
+    <option value="${m}" <c:if test="${param.month == m}">selected</c:if>>${m}</option>
+  </c:forEach>
+	</select>
+		<select name="year" id="year">
+  	<c:forEach begin="2023" end="2025" var="y">
+    <option value="${y}" <c:if test="${param.year == y}">selected</c:if>>${y}</option>
+  </c:forEach>
+	</select>
         <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filter</button>
       </form>
       <form action="reportByCause" method="get" class="report-filter-group">
