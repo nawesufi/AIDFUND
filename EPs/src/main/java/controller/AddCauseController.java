@@ -74,8 +74,13 @@ public class AddCauseController extends HttpServlet {
     		java.sql.Date endDate = java.sql.Date.valueOf(request.getParameter("endDate"));
     		String status = request.getParameter("status");
     		
-    		boolean exists = CauseDAO.doesCauseIdExist(causeId);
-    		
+    		 // Check for duplicate causeId
+            boolean exists = CauseDAO.doesCauseIdExist(causeId);
+            if (exists) {
+                request.setAttribute("errorMessage", "Cause ID already exists. Please choose another.");
+                request.getRequestDispatcher("Cause.jsp").forward(request, response);
+                return;
+            }    		
     		// Handle thumbnail upload
             Part thumbnailPart = request.getPart("thumbnail");
             String thumbnailPath = "uploads/" + Paths.get(thumbnailPart.getSubmittedFileName()).getFileName().toString();
@@ -84,10 +89,6 @@ public class AddCauseController extends HttpServlet {
                 uploadsDir.mkdir(); // Create the uploads directory if it doesn't exist
             }
             thumbnailPart.write(uploadsDir + File.separator + thumbnailPart.getSubmittedFileName());
-            if (exists) {
-	            request.setAttribute("errorMessage", "Cause ID already exists. Please choose another.");
-	            request.getRequestDispatcher("editCause.jsp").forward(request, response);
-	        } else {
             // Create a new Cause object
     		Cause cause = new Cause();
     		cause.setCauseId(causeId);
@@ -105,10 +106,10 @@ public class AddCauseController extends HttpServlet {
     		CauseDAO.addCause(cause);
     		System.out.println("Campaign created successfully." + cause.getTitle());
     		response.sendRedirect("Cause");
-        } }catch (NumberFormatException e) {
+         }catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid numeric value.");
         } catch (IllegalArgumentException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid date format.");  
             }
-}
+  	}
 }
