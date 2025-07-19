@@ -121,6 +121,11 @@
         .user-topbar nav { gap: 10px; }
         .main-content-user { padding: 12px 0; }
       }
+      .donation-subtitle-section {
+		  margin-top: 24px;
+		  margin-bottom: 16px;
+		}
+      
       .footer { background: #ecebfc !important; }
       .donation-search-card {
         background: #fff;
@@ -149,47 +154,59 @@
         margin-bottom: 0;
       }
       .donation-search-input-group input[type="text"] {
-        border-radius: 10px 0 0 10px;
-        border: 1.5px solid #e6e9f0;
-        background: #f6f8fb;
-        font-size: 1.1rem;
-        padding: 12px 16px;
-        flex: 1;
-        outline: none;
-        font-family: 'Fredoka', Arial, sans-serif;
-        font-weight: 600;
-        color: #222;
-        border-right: none;
-      }
-      .donation-search-input-group button {
-        border-radius: 0 10px 10px 0;
-        border: 1.5px solid #6C63FF;
-        background: #6C63FF;
-        color: #fff;
-        font-weight: 700;
-        font-size: 1.08rem;
-        padding: 0 22px;
-        transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
-        box-shadow: 0 1px 4px rgba(108,99,255,0.07);
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        cursor: pointer;
-        border-left: none;
-        height: 48px;
-      }
-      .donation-search-input-group button:hover, .donation-search-input-group button:focus {
+	  	border-radius: 10px 0 0 10px;
+	  	border: 1.5px solid transparent; 
+	  	background: #f6f8fb;
+	  	font-size: 1.1rem;
+	  	padding: 12px 16px;
+	  	height: 48px;
+	  	flex: 1;
+	  	outline: none;
+	  	font-family: 'Fredoka', Arial, sans-serif;
+	  	font-weight: 600;
+	  	color: #222;
+	  	border-right: none;
+	  	box-sizing: border-box;
+	  	transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+	  }
+	  .donation-search-input-group input[type="text"]:hover,
+	  .donation-search-input-group input[type="text"]:focus {
+	 	border: 1.5px solid #6C63FF;
+	    border-right: none;
+	  	background-color: #eef0fc;
+  	  	box-shadow: 0 0 6px rgba(108,99,255,0.2);
+	  }
+	   .donation-search-input-group button {
+		border-radius: 0 10px 10px 0;
+		border: 1.5px solid #6C63FF;
+		background: #6C63FF;
+		color: #fff;
+		font-weight: 700;
+		font-size: 1.08rem;
+		padding: 0 22px;
+		height: 48px;
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		cursor: pointer;
+		border-left: none;
+		box-sizing: border-box;
+		transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+	  }
+      .donation-search-input-group button:hover, 
+      .donation-search-input-group button:focus {
         background: #554ee2;
         box-shadow: 0 4px 16px rgba(108,99,255,0.13);
         transform: scale(1.04);
       }
       .donation-result-card {
-        background: #f6f8fb;
+        background: #ecebfc;
+        border-left: 6px solid #6C63FF;
         border-radius: 18px;
-        box-shadow: 0 2px 12px rgba(108,99,255,0.10);
+        box-shadow:  0 2px 12px rgba(108,99,255,0.12);
         max-width: 420px;
         margin: 0 auto 32px auto;
-        padding: 28px 28px 20px 28px;
+        padding: 32px 28px 20px 28px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
@@ -197,11 +214,11 @@
         position: relative;
       }
       .donation-result-card .result-icon {
-        color: #4b49ac;
+        color: #6C63FF;
         font-size: 2.2rem;
         position: absolute;
-        top: 18px;
-        right: 22px;
+        top: 16px;
+        right: 18px;
       }
       .donation-result-card p {
         margin-bottom: 10px;
@@ -211,20 +228,42 @@
         color: #222;
         font-weight: 700;
       }
+      .donation-result-card:hover {
+  		box-shadow: 0 6px 18px rgba(108,99,255,0.18);
+  		transform: scale(1.02);
+  		transition: all 0.3s ease;
+	  }
       .donation-error-card {
-        background: #fff0f0;
-        border-radius: 18px;
-        box-shadow: 0 2px 12px rgba(255,0,0,0.07);
-        max-width: 420px;
-        margin: 0 auto 32px auto;
-        padding: 24px 28px 18px 28px;
-        color: #a32020;
-        font-weight: 700;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 1.08rem;
-      }
+  		background: #fff0f0;
+  		border-radius: 18px;
+		border-left: 6px solid #d62828;
+		box-shadow: 0 2px 12px rgba(214,40,40,0.12);
+		max-width: 420px;
+		margin: 0 auto 32px auto;
+		padding: 20px 24px;
+		color: #a32020;
+		font-weight: 700;
+		display: flex;
+		align-items: flex-start;
+		gap: 14px;
+		font-size: 1.08rem;
+	  }
+	  .donation-error-card .fa-exclamation-triangle {
+		color: #d62828;
+		font-size: 1.8rem;
+		flex-shrink: 0;
+		margin-top: 2px;
+	  }		
+	  .donation-error-card p {
+		margin: 0;
+		font-weight: 500;
+		line-height: 1.4;
+	  }
+	  .donation-error-card:hover {
+	    box-shadow: 0 6px 18px rgba(108,99,255,0.18);
+  		transform: scale(1.02);
+  		transition: all 0.3s ease;
+	  }
       @media (max-width: 600px) {
         .donation-search-card, .donation-result-card, .donation-error-card {
           max-width: 98vw;
@@ -260,18 +299,29 @@
                 <div class="col-xl-12">
                     <div class="bradcam_text text-center">
                         <h3 style="letter-spacing: 0.18em; font-size:2.2rem; font-weight:800; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,0.13);">DONATION HISTORY</h3>
+                    	<p class="bradcam-subtitle">Thank you for your donation! Your kindness will always find its way to you 💖</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <!-- bradcam_area_end  -->
+    
+    <!-- Subtitle Outside Banner -->
+	<div class="donation-subtitle-section text-center">
+	<p style="font-family: 'Fredoka', sans-serif; font-size: 1.3rem; color: black;">
+	  Track your donation using your 
+	  <span style="color: #4b49ac;">Reference ID</span> 
+	  below.
+	</p>
+	</div>
+    
 
     <div class="donation-search-card">
       <form action="searchDonation" method="post" style="width:100%;">
         <label for="refId"><i data-lucide="search"></i> Enter Reference ID:</label>
         <div class="donation-search-input-group">
-          <input type="text" name="refId" id="refId" required placeholder="e.g. 123456" />
+          <input type="text" name="refId" id="refId" required placeholder="e.g: REF-3E41C1CC-5" />
           <button type="submit"><i data-lucide="search"></i> Search</button>
         </div>
       </form>
@@ -280,11 +330,11 @@
 <!-- Display Result (if any) -->
 <c:if test="${not empty donation}">
   <div class="donation-result-card">
-    <i class="fa fa-check-circle result-icon"></i>
+    <i class="fa fa-check-circle result-icon" style="color: #28a745;"></i>
     <p><b>Name:</b> ${donation.donor.dname}</p>
     <p><b>Email:</b> ${donation.donor.demail}</p>
     <p><b>Phone:</b> ${donation.donor.dphone}</p>
-    <p><b>Amount:</b> RM ${donation.amount}</p>
+    <p><b>Amount:</b> <span style="color: #28a745; font-weight: 700;">RM${donation.amount}</span></p>
     <p><b>Date:</b> ${donation.donationDate}</p>
     <p><b>Reference ID:</b> ${donation.donationID}</p>
   </div>
@@ -295,6 +345,73 @@
       <i class="fa fa-exclamation-triangle"></i> ${error}
     </div>
 </c:if>
+</div>
+ <!-- footer_start  -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-lg-4 d-flex flex-column justify-content-start">
+ 					 <div class="footer_widget" style="margin-top: -15px;">
+                            <div class="footer_logo">
+                                <a href="#" style="text-decoration:none;">
+                                    <span style="font-family:'Fredoka',Arial,sans-serif;font-size:2.2rem;font-weight:700;color:#222;letter-spacing:1px;display:flex;align-items:center;">
+                                        AidFund<span class="plus" style="color:#a51d23;">+</span>
+                                    </span>
+                                </a>
+                            </div>
+                           <p class="address_text" style="margin-top: 8px;">
+ 						   AidFund+ is dedicated to empowering communities by providing essential resources such as food, clean water, clothing, and education to those in need. Join us in making a positive impact and building a brighter future for all.
+						   </p>
+                            <div class="socail_links">
+                                <ul>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">Services</h3>
+                            <ul class="links">
+                                <li><a href="causePage.jsp">Donate</a></li>
+								<li><a href="https://wa.me/601111431767?text=I%20want%20to%20be%20a%20Volunteer!" target="_blank">Become a Volunteer</a></li>
+								<li><a href="mailto:aidfundpartner@gmail.com?subject=Corporate Partnership Inquiry">Corporate Partnership</a></li>
+                   
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">Contacts</h3>
+                            <div class="contacts">
+                                <p>
+                                	+60 13-456 7890<br>
+					                support@aidfund.my<br>
+					                12 Jalan Kasih, Seksyen 7,<br>
+					                40000 Shah Alam, Selangor, Malaysia<br><br>
+					           </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="row">
+                    <div class="bordered_1px "></div>
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> AidFund+. All rights reserved. | Empowering communities, changing lives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </footer>
+    <!-- footer_end  -->
     
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
