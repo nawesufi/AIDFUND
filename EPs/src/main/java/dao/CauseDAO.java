@@ -53,7 +53,11 @@ public class CauseDAO {
     public static List<Cause> getActiveCausesDonor() throws Exception {
         List<Cause> activeCauses = new ArrayList<>();
 
-        String sql = "SELECT * FROM campaign WHERE status = 'Active'";
+        String sql = "SELECT c.*, IFNULL(SUM(d.amount), 0) AS totalCollected " +
+                "FROM campaign c " +
+                "LEFT JOIN donation d ON c.campaignID = d.campaignID " +
+                "WHERE c.status = 'Active' " +
+                "GROUP BY c.campaignID";
 
         try {
         	con = ConnectionManager.getConnection();
@@ -71,6 +75,7 @@ public class CauseDAO {
                 c.setEndDate(rs.getDate("endDate"));
                 c.setStatus(rs.getString("status"));
                 c.setThumbnail(rs.getString("thumbnail"));
+                c.setTotalCollected(rs.getDouble("totalCollected"));
                 activeCauses.add(c);
             }
             System.out.println("Total active causes fetched: " + activeCauses.size());
@@ -111,25 +116,36 @@ public class CauseDAO {
     }
 
     public static void updateCause(Cause c) throws SQLException {
-    	try {
-        String sql = "UPDATE campaign SET title=?, description=?, headline=?, targetAmount=?, startDate=?, endDate=?, status=?, userID=? WHERE campaignID=?";
-		con = ConnectionManager.getConnection();
-        ps = con.prepareStatement(sql);
-        ps.setString(1, c.getTitle());
-        ps.setString(2, c.getDescription());
-        ps.setString(3, c.getHeadline());
-        ps.setDouble(4, c.getTargetAmount());
-        ps.setDate(5, c.getStartDate());
-        ps.setDate(6, c.getEndDate());
-        ps.setString(7, c.getStatus());
-        ps.setInt(8, c.getUserId());
-        ps.setString(9,  c.getCauseId());
-        ps.executeUpdate();
-        ps.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-}
+        try {
+            String sql;
+            boolean updateThumbnail = c.getThumbnail() != null && !c.getThumbnail().isEmpty();
+            if (updateThumbnail) {
+                sql = "UPDATE campaign SET title=?, description=?, headline=?, targetAmount=?, startDate=?, endDate=?, status=?, userID=?, thumbnail=? WHERE campaignID=?";
+            } else {
+                sql = "UPDATE campaign SET title=?, description=?, headline=?, targetAmount=?, startDate=?, endDate=?, status=?, userID=? WHERE campaignID=?";
+            }
+            con = ConnectionManager.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, c.getTitle());
+            ps.setString(2, c.getDescription());
+            ps.setString(3, c.getHeadline());
+            ps.setDouble(4, c.getTargetAmount());
+            ps.setDate(5, c.getStartDate());
+            ps.setDate(6, c.getEndDate());
+            ps.setString(7, c.getStatus());
+            ps.setInt(8, c.getUserId());
+            if (updateThumbnail) {
+                ps.setString(9, c.getThumbnail());
+                ps.setString(10, c.getCauseId());
+            } else {
+                ps.setString(9, c.getCauseId());
+            }
+            ps.executeUpdate();
+            ps.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void deleteCause(String causeId) throws SQLException {
     	try {

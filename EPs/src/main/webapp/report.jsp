@@ -185,9 +185,19 @@
         box-shadow: 0 2px 12px rgba(0,0,0,0.07);
         padding: 24px;
       }
-      .btn-primary, .btn-success, .btn-danger, .btn-warning {
+      .btn-primary, .btn-success, .btn-danger, .btn-warning, .btn-secondary {
         border-radius: 8px;
         font-weight: 600;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: white;
+      }
+      .btn-secondary:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+        color: white;
       }
       .table thead th {
         background: #f6f8fb;
@@ -315,17 +325,28 @@
     <div class="report-filters">
       <form method="get" action="byMonthReport" class="report-filter-group">
         <label for="month"><i class="fa fa-calendar"></i> Month:</label>
-       <select name="month" id="month">
- 	 <c:forEach begin="1" end="12" var="m">
-    <option value="${m}" <c:if test="${param.month == m}">selected</c:if>>${m}</option>
-  </c:forEach>
-	</select>
-		<select name="year" id="year">
-  	<c:forEach begin="2023" end="2025" var="y">
-    <option value="${y}" <c:if test="${param.year == y}">selected</c:if>>${y}</option>
-  </c:forEach>
-	</select>
-        <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filter</button>
+        <select name="month" id="month">
+          <option value="1" <c:if test="${param.month == '1'}">selected</c:if>>January</option>
+          <option value="2" <c:if test="${param.month == '2'}">selected</c:if>>February</option>
+          <option value="3" <c:if test="${param.month == '3'}">selected</c:if>>March</option>
+          <option value="4" <c:if test="${param.month == '4'}">selected</c:if>>April</option>
+          <option value="5" <c:if test="${param.month == '5'}">selected</c:if>>May</option>
+          <option value="6" <c:if test="${param.month == '6'}">selected</c:if>>June</option>
+          <option value="7" <c:if test="${param.month == '7'}">selected</c:if>>July</option>
+          <option value="8" <c:if test="${param.month == '8'}">selected</c:if>>August</option>
+          <option value="9" <c:if test="${param.month == '9'}">selected</c:if>>September</option>
+          <option value="10" <c:if test="${param.month == '10'}">selected</c:if>>October</option>
+          <option value="11" <c:if test="${param.month == '11'}">selected</c:if>>November</option>
+          <option value="12" <c:if test="${param.month == '12'}">selected</c:if>>December</option>
+        </select>
+        <label for="year"><i class="fa fa-calendar"></i> Year:</label>
+        <select name="year" id="year">
+          <c:forEach begin="2023" end="2025" var="y">
+            <option value="${y}" <c:if test="${param.year == y}">selected</c:if>>${y}</option>
+          </c:forEach>
+        </select>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-filter"></i> Filter by Month</button>
+        <a href="report" class="btn btn-secondary" style="margin-top: 8px; display: block; text-align: center;"><i class="fa fa-times"></i> Clear Filter</a>
       </form>
       <form action="reportByCause" method="get" class="report-filter-group">
         <label for="causeId"><i class="fa fa-bullseye"></i> Campaign:</label>
@@ -341,6 +362,22 @@
     </div>
   </div>
   <div class="report-table-card">
+    <c:if test="${empty donations}">
+      <div class="alert alert-info text-center" style="margin: 20px 0;">
+        <i class="fa fa-info-circle"></i> No donations found for the selected criteria.
+        <c:if test="${not empty param.month and not empty param.year}">
+          <br>Month: ${param.month}, Year: ${param.year}
+        </c:if>
+      </div>
+    </c:if>
+    <c:if test="${not empty donations}">
+      <div class="alert alert-success" style="margin-bottom: 20px;">
+        <i class="fa fa-check-circle"></i> Found ${donations.size()} donation(s)
+        <c:if test="${not empty param.month and not empty param.year}">
+          for ${param.month}/${param.year}
+        </c:if>
+      </div>
+    </c:if>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -383,6 +420,18 @@ floatingLogo.style.display = 'none';
 
 document.getElementById('sidebarToggle').onclick = toggleSidebar;
 document.getElementById('sidebarToggleFloating').onclick = toggleSidebar;
+
+// Debug form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const monthForm = document.querySelector('form[action="byMonthReport"]');
+    if (monthForm) {
+        monthForm.addEventListener('submit', function(e) {
+            const month = document.getElementById('month').value;
+            const year = document.getElementById('year').value;
+            console.log('Form submitting with month:', month, 'year:', year);
+        });
+    }
+});
 </script>
 </body>
 </html>

@@ -90,10 +90,10 @@
             <img src="${cause.thumbnail}" alt="Thumbnail" class="thumbnail-preview">
         </div>
 
-        <!-- <div class="form-group">
+        <div class="form-group">
             <label>Change Thumbnail (optional)</label>
             <input type="file" name="thumbnail" accept="image/*" class="form-control-file">
-        </div>-->
+        </div>
 
         <div class="form-group">
             <label>Target Amount (RM)</label>

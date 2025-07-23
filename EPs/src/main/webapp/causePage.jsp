@@ -238,10 +238,10 @@ List<model.Cause> causes = dao.CauseDAO.getActiveCausesDonor();
                 <div class="meta"><strong>Target:</strong> RM ${cause.targetAmount}</div>
                 <div class="meta"><strong>Start Date:</strong> ${cause.startDate}</div>
                 <div class="meta"><strong>End Date:</strong> ${cause.endDate}</div>
-               <!-- <div class="cause-progress-bar-bg">
+                <div class="cause-progress-bar-bg">
                   <div class="cause-progress-bar" style="width: ${progressPercentInt}%"></div>
                   <span class="cause-progress-label">${progressPercentInt}%</span>
-                </div>-->
+                </div>
                 <!-- DEBUG: Show collected and target values
                 <div style="color: #a51d23; font-size: 0.98rem; margin-bottom: 6px;">
                   Collected: ${cause.totalCollected} / Target: ${cause.targetAmount}

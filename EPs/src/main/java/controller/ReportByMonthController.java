@@ -22,18 +22,25 @@ public class ReportByMonthController extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             String monthStr = request.getParameter("month");
             String yearStr = request.getParameter("year");
 
+            System.out.println("ReportByMonthController - Received parameters: month=" + monthStr + ", year=" + yearStr);
+
+            // Test database connection and date functions
+            DonationDAO.testDatabaseConnection();
+            
             List<Donation> donations;
             if (monthStr != null && yearStr != null && !monthStr.isEmpty() && !yearStr.isEmpty()) {
                 int month = Integer.parseInt(monthStr);
                 int year = Integer.parseInt(yearStr);
+                System.out.println("Filtering by month: " + month + ", year: " + year);
                 donations = DonationDAO.getDonationsByMonth(month, year);
             } else {
+                System.out.println("No month/year parameters provided, showing all donations");
                 donations = DonationDAO.getAllDonations();
             }
 

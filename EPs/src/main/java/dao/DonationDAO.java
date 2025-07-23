@@ -118,12 +118,16 @@ public class DonationDAO {
 
 	  public static List<Donation> getDonationsByMonth(int month, int year) throws SQLException {
 		    List<Donation> list = new ArrayList<>();
-		    String sql = "SELECT * FROM donation WHERE MONTH(donationDate) = ? AND YEAR(donationDate) = ?";
+		    // More robust query that handles different date formats
+		    String sql = "SELECT * FROM donation WHERE MONTH(donationDate) = ? AND YEAR(donationDate) = ? ORDER BY donationDate DESC";
 
 		    try (Connection conn = ConnectionManager.getConnection();
 		         PreparedStatement ps = conn.prepareStatement(sql)) {
 		        ps.setInt(1, month);
 		        ps.setInt(2, year);
+		        
+		        System.out.println("Executing query: " + sql + " with month=" + month + ", year=" + year);
+		        
 		        ResultSet rs = ps.executeQuery();
 
 		        while (rs.next()) {
@@ -135,6 +139,22 @@ public class DonationDAO {
 		            d.setCauseId(rs.getString("campaignID"));
 		            d.setDonorID(rs.getInt("donorID"));
 		            list.add(d);
+		        }
+		        
+		        System.out.println("Found " + list.size() + " donations for month " + month + ", year " + year);
+		        
+		        // If no results found, let's check what dates are actually in the database
+		        if (list.isEmpty()) {
+		            System.out.println("No donations found for month " + month + ", year " + year);
+		            System.out.println("Checking all donation dates in database...");
+		            String checkSql = "SELECT DISTINCT donationDate, MONTH(donationDate) as month, YEAR(donationDate) as year FROM donation ORDER BY donationDate DESC LIMIT 10";
+		            PreparedStatement checkPs = conn.prepareStatement(checkSql);
+		            ResultSet checkRs = checkPs.executeQuery();
+		            while (checkRs.next()) {
+		                System.out.println("Available date: " + checkRs.getDate("donationDate") + 
+		                                 " (Month: " + checkRs.getInt("month") + 
+		                                 ", Year: " + checkRs.getInt("year") + ")");
+		            }
 		        }
 		    }
 		    return list;
@@ -161,6 +181,24 @@ public class DonationDAO {
 		        }
 		    }
 		    return list;
+		}
+
+	  public static void testDatabaseConnection() throws SQLException {
+		    System.out.println("Testing database connection and date functions...");
+		    try (Connection conn = ConnectionManager.getConnection()) {
+		        // Test if MONTH and YEAR functions work
+		        String testSql = "SELECT donationDate, MONTH(donationDate) as month, YEAR(donationDate) as year FROM donation LIMIT 5";
+		        PreparedStatement ps = conn.prepareStatement(testSql);
+		        ResultSet rs = ps.executeQuery();
+		        
+		        System.out.println("Sample donation dates from database:");
+		        while (rs.next()) {
+		            System.out.println("Date: " + rs.getDate("donationDate") + 
+		                             ", Month: " + rs.getInt("month") + 
+		                             ", Year: " + rs.getInt("year"));
+		        }
+		        System.out.println("Database connection and date functions test completed.");
+		    }
 		}
 
 	  
