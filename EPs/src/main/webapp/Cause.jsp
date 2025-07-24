@@ -318,7 +318,11 @@
           
           <div class="form-group">
             <label style="font-weight:600;">Campaign ID</label>
-            <input type="text" name="causeId" class="form-control" required placeholder="Enter unique Cause ID" style="width:100%;border-radius:8px;padding:8px;">
+			<input type="text" name="causeId" class="form-control" required 
+       			pattern="[A-Z]{3}[0-9]{3}" 
+       			title="Campaign ID must be 3 uppercase letters followed by 3 digits (e.g., ABC123)" 
+       			placeholder="e.g. ABC123"
+       			style="width:100%;border-radius:8px;padding:8px;">
           </div>
           
           <div class="form-group">
