@@ -253,7 +253,9 @@ List<model.Cause> causes = dao.CauseDAO.getActiveCausesDonor();
               </button>
               <!-- 📎 Copy link icon -->
               <button type="button" class="btn btn-outline-secondary open-share-modal" 
-                data-cause-id="${cause.causeId}">
+                data-cause-id="${cause.causeId}"
+                data-title="${cause.title}"
+        		data-description="${cause.description}">
                 <i class="fa fa-link"></i>
               </button>
               <!-- debug 
@@ -366,7 +368,7 @@ List<model.Cause> causes = dao.CauseDAO.getActiveCausesDonor();
 </footer>
 
 <script src="js/vendor/jquery-1.12.4.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script>
   $(document).ready(function(){

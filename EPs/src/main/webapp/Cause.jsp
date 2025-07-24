@@ -305,6 +305,14 @@
         <h3 id="causeModalTitle" style="font-family:'Fredoka',Arial,sans-serif;font-weight:700;color:#6C63FF;text-align:center;margin-bottom:12px;">Create Cause</h3>
         <form action="AddCauseController?fix=1" method="post" style="width:100%;display:flex;flex-direction:column;gap:10px;" enctype="multipart/form-data">
        
+       <!-- Error message here -->
+         <c:if test="${not empty errorMessage}">
+    <div style="color: red; font-weight: bold; margin-bottom: 10px;">
+        ${errorMessage}
+    </div>
+</c:if>
+
+          
           <input type="hidden" name="userId" value="1" />
 		  <input type="hidden" name="status" value="Active" />
           
@@ -410,5 +418,16 @@ window.addEventListener('DOMContentLoaded', function () {
         }
       });*/
     </script>
+    
+<!-- Open modal if error exists -->
+<c:if test="${not empty errorMessage}">
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            openCauseModal(); 
+        });
+    </script>
+</c:if>
+
+    
 </body>
 </html>
