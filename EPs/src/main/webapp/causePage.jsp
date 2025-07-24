@@ -363,9 +363,72 @@ List<model.Cause> causes = dao.CauseDAO.getActiveCausesDonor();
   </div>
 </div>
 
-<footer class="footer">
-  <!-- Footer content as before -->
-</footer>
+<!-- footer_start  -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-4 col-md-6 col-lg-4 d-flex flex-column justify-content-start">
+ 					 <div class="footer_widget" style="margin-top: -15px;">
+                            <div class="footer_logo">
+                                <a href="#" style="text-decoration:none;">
+                                    <span style="font-family:'Fredoka',Arial,sans-serif;font-size:2.2rem;font-weight:700;color:#222;letter-spacing:1px;display:flex;align-items:center;">
+                                        AidFund<span class="plus" style="color:#a51d23;">+</span>
+                                    </span>
+                                </a>
+                            </div>
+                           <p class="address_text" style="margin-top: 8px;">
+ 						   AidFund+ is dedicated to empowering communities by providing essential resources such as food, clean water, clothing, and education to those in need. Join us in making a positive impact and building a brighter future for all.
+						   </p>
+                            <div class="socail_links">
+                                <ul>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">Services</h3>
+                            <ul class="links">
+                                <li><a href="causePage.jsp">Donate</a></li>
+								<li><a href="https://wa.me/601111431767?text=I%20want%20to%20be%20a%20Volunteer!" target="_blank">Become a Volunteer</a></li>
+								<li><a href="mailto:aidfundpartner@gmail.com?subject=Corporate Partnership Inquiry">Corporate Partnership</a></li>
+                   
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget">
+                            <h3 class="footer_title">Contacts</h3>
+                            <div class="contacts">
+                                <p>
+                                	+60 13-456 7890<br>
+					                support@aidfund.my<br>
+					                12 Jalan Kasih, Seksyen 7,<br>
+					                40000 Shah Alam, Selangor, Malaysia<br><br>
+					           </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+        <div class="copy-right_text">
+            <div class="container">
+                <div class="row">
+                    <div class="bordered_1px "></div>
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> AidFund+. All rights reserved. | Empowering communities, changing lives.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+    </footer>
+    <!-- footer_end  -->
 
 <script src="js/vendor/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

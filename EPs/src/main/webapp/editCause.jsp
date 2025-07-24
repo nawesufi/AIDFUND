@@ -76,9 +76,12 @@
         </div>
 
         <div class="form-group">
-            <label>Headline</label>
-            <input type="text" name="headline" class="form-control" required value="${cause.headline}">
-        </div>
+    		<label>Headline</label>
+    		<input type="text" name="headline" class="form-control" required 
+           value="${cause.headline}" 
+           pattern=".*[A-Za-z0-9].*" 
+           title="Headline must contain at least one letter or number.">
+		</div>
 
         <div class="form-group">
             <label>Description</label>
@@ -97,7 +100,7 @@
 
         <div class="form-group">
             <label>Target Amount (RM)</label>
-            <input type="number" name="targetAmount" class="form-control" required value="${cause.targetAmount}">
+            <input type="number" name="targetAmount" class="form-control" required value="${cause.targetAmount}" min = "10">
         </div>
 
         <div class="form-group">
